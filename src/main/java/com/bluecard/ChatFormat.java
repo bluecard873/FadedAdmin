@@ -9,10 +9,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class ChatFormat implements Listener {
     @EventHandler
-    public void FormatChat(AsyncChatEvent event) {
-        Bukkit.broadcast(Component.text(BadWordFilter.FilterBadWords(event.getPlayer().getName() + ": " + ((TextComponent)(Object)event.message()).getText())));
+    public void FormatChat(AsyncChatEvent event) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Class<?> clazz = Class.forName("net.kyori.adventure.text.TextComponentImpl");
+        Method m = clazz.getMethod("content");
+
+        Bukkit.broadcast(Component.text(BadWordFilter.FilterBadWords(event.getPlayer().getName() + ": " + ((TextComponent)m.invoke(event.message(), new Object[0])).getText())));
         event.setCancelled(true);
     }
 }
