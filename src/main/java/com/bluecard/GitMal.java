@@ -10,11 +10,15 @@ public class GitMal implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length != 2) {
+        if (args.length < 2) {
             return false;
         }
+        String msg = "";
+        for (int i = 1; i >= args.length; i++) {
+            msg += args[i] + " ";
+        }
         Player targetPlayer = Bukkit.getPlayer(args[0]);
-        targetPlayer.sendMessage(BadWordFilter.FilterBadWords("[" + sender.getName() + " -> me] " + args[1]));
+        targetPlayer.sendMessage(BadWordFilter.FilterBadWords("[" + sender.getName() + " -> me] " + msg));
         return true;
     }
 }
