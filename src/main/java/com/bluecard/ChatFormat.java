@@ -16,8 +16,8 @@ public class ChatFormat implements Listener {
     @EventHandler
     public void FormatChat(AsyncChatEvent event) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Class<?> clazz = Class.forName("net.kyori.adventure.text.TextComponentImpl");
-        Method m = clazz.getMethod("content");
-
+        Method m = clazz.getDeclaredMethod("content");
+        m.setAccessible(true);
         Bukkit.broadcast(Component.text(BadWordFilter.FilterBadWords(event.getPlayer().getName() + ": " + ((TextComponent)m.invoke(event.message(), new Object[0])).getText())));
         event.setCancelled(true);
     }
