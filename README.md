@@ -1,4 +1,3 @@
-#FadedAdmin   
-A Plugin For Faded Server   
-##---------------------------------------------------------
+#FadedAdmin
+A Plugin For Faded Server
 ##This Plugin is Only For Faded Server!
