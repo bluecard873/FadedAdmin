@@ -1,7 +1,12 @@
 package com.bluecard;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextReplacementConfig;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class BadWordFilter {
     static List<String> BadWords = new ArrayList<>();
@@ -32,11 +37,7 @@ public class BadWordFilter {
     public static String FilterBadWords(String value) {
         String output = value;
         for (String s : BadWords) {
-            String nungot = "*";
-            for (int i = 1; i >= s.length(); i++) {
-                nungot += "*";
-            }
-            output = output.replace(s, nungot);
+            output = output.replace(s, "*".repeat(s.length()));
         }
         return output;
     }
