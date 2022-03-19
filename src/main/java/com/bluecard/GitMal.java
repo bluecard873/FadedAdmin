@@ -24,7 +24,7 @@ public class GitMal implements CommandExecutor {
         for (String s : args) {
             args2.add(s);
         }
-        args2.remove(1);
+        args2.remove(0);
         for (String arg : args2) {
             msg += arg + " ";
         }
