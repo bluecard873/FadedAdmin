@@ -18,7 +18,7 @@ public class ChatFormat implements Listener {
         Class<?> clazz = Class.forName("net.kyori.adventure.text.TextComponentImpl");
         Method m = clazz.getDeclaredMethod("content");
         m.setAccessible(true);
-        Bukkit.broadcast(Component.text(BadWordFilter.FilterBadWords(event.getPlayer().getName() + ": " + ((TextComponent)m.invoke(event.message(), new Object[0])).getText())));
+        Bukkit.broadcast(Component.text(BadWordFilter.FilterBadWords(event.getPlayer().getName() + ": " + m.invoke(event.message(), new Object[0]))));
         event.setCancelled(true);
     }
 }
