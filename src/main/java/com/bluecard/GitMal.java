@@ -6,6 +6,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+
 public class GitMal implements CommandExecutor {
 
     @Override
@@ -14,8 +20,13 @@ public class GitMal implements CommandExecutor {
             return false;
         }
         String msg = "";
-        for (int i = 1; i >= args.length; i++) {
-            msg += args[i] + " ";
+        java.util.List<String> args2 = new ArrayList<>();
+        for (String s : args) {
+            args2.add(s);
+        }
+        args2.remove(1);
+        for (String arg : args2) {
+            msg += arg + " ";
         }
         Player targetPlayer = Bukkit.getPlayer(args[0]);
         targetPlayer.sendMessage(BadWordFilter.FilterBadWords("[" + sender.getName() + " -> me] " + msg));

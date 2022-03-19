@@ -33,6 +33,7 @@ public class BadWordFilter {
         BadWords.add("섹스");
         BadWords.add("ㅅㅅ");
         BadWords.add("6974");
+        BadWords.add("dong");
     }
     public static String FilterBadWords(String value) {
         String output = value;
