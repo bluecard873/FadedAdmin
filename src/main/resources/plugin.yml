@@ -1,0 +1,19 @@
+name: FadedAdmin
+version: '${version}'
+main: com.bluecard.FadedAdmin
+api-version: 1.18
+authors: [ bluecard ]
+description: An Admin Tool For A Faded Server
+website: http://www.example.com/
+commands:
+  fly:
+    description: allow / deny flight
+    usage: /fly
+    permission: op
+    permission-message: This Command is Required OP.
+  w:
+    description: whistle
+    usage: /w <player> <text>
+  msg:
+    description: whistle
+    usage: /msg <player> <text>
